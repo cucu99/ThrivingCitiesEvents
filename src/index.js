@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import App from './App';
 
 // import injectGlobal helper
@@ -17,6 +18,11 @@ injectGlobal`
   box-sizing: inherit;
 }
 
+/* Root font-size */
+html {
+  font-size: 62.5%;
+}
+
 body {
   /* Font properties */
   font-family: 'Lato', sans-serif;
@@ -31,4 +37,9 @@ body {
 }
 `;
 
-ReactDOM.render(<App />, document.getElementById('root'));
+render(
+  <BrowserRouter>
+    <Route path="/" component={App} />
+  </BrowserRouter>,
+  document.getElementById('root')
+);
