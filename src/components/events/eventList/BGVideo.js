@@ -1,9 +1,10 @@
+// Library Imports
 import React from 'react';
 import styled from 'styled-components';
-
+// Video file imports
 import videomp4 from '../../../data/img/videomp4.mp4';
 import videowebm from '../../../data/img/videowebm.webm';
-
+// Style video container
 const BGVideoWrapper = styled.div`
   position: absolute;
   top: 0;
@@ -14,7 +15,7 @@ const BGVideoWrapper = styled.div`
   opacity: 0.15;
   overflow: hidden;
 `;
-
+// Style video component
 const videoStyle = {
   height: '100%',
   width: '100%',
@@ -24,9 +25,10 @@ const videoStyle = {
 export default () => {
   return (
     <BGVideoWrapper>
-      <video autoplay="true" loop="true" muted="true" style={videoStyle}>
+      <video autoPlay="true" loop="true" muted="true" style={videoStyle}>
         <source src={videomp4} type="video/mp4" />
         <source src={videowebm} type="video/webm" />
+        {/* Only shows if browser can't play it. For example IE < 9 */}
         Your browser is not supported!
       </video>
     </BGVideoWrapper>

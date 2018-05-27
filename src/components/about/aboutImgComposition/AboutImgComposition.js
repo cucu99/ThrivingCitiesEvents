@@ -1,7 +1,10 @@
+// Container for About section/ImageComposition
+// Library imports
 import React from 'react';
 
-// import { AboutImgCompositionItem } from './AboutImgCompositionItem';
+// Component imports
 import AboutImgCompositionList from './AboutImgCompositionList';
+// Function imports
 import { Column } from '../../helpers/grid';
 
 export default props => {

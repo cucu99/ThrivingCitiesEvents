@@ -1,5 +1,6 @@
+// Library Imports
 import React from 'react';
-
+// Function Imports
 import { ButtonText } from '../../Button';
 import { TertiaryH3, Paragraph } from '../../helpers/typography';
 import { FormatText } from '../../helpers/utility';
@@ -23,7 +24,7 @@ export default () => {
       </FormatText>
 
       <FormatText marginBottom="1.5rem">
-        <TertiaryH3>Browse through our event categories!</TertiaryH3>
+        <TertiaryH3>Find and book your program today! </TertiaryH3>
       </FormatText>
 
       <FormatText marginBottom="2rem">

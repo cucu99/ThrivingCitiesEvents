@@ -1,13 +1,14 @@
+// Library Imports
 import React from 'react';
 import styled from 'styled-components';
-
+// Component Imports
 import PromotedEventsCard from './PromotedEventsCard';
-
+// Function Imports
 import { SecondaryH2 } from '../../helpers/typography';
 import { FormatText } from '../../helpers/utility';
 import { Row, Column } from '../../helpers/grid';
 import { ButtonPrimary } from '../../Button';
-
+// Section container style
 const PromotedEventsWrapper = styled.section`
   background-color: #f7f7f7;
   padding: 25rem 0 15rem 0;
@@ -15,9 +16,8 @@ const PromotedEventsWrapper = styled.section`
 `;
 
 export default ({ events }) => {
-  // Sort events by participants
   let sortedByParticipants = [];
-
+  // Sort events by participants
   sortedByParticipants = events.sort(function(a, b) {
     return b.participants - a.participants;
   });
@@ -30,6 +30,7 @@ export default ({ events }) => {
 
       <Row marginBottom="6rem">
         <Column gutter="6rem" width={1 / 3}>
+          {/* Call PromotedEventsCard component and pass props */}
           <PromotedEventsCard
             events={sortedByParticipants[0]}
             color1="255, 185, 0"
@@ -37,6 +38,7 @@ export default ({ events }) => {
           />
         </Column>
         <Column gutter="6rem" width={1 / 3}>
+          {/* Call PromotedEventsCard component and pass props */}
           <PromotedEventsCard
             events={sortedByParticipants[1]}
             color1="41, 152, 255"
@@ -44,6 +46,7 @@ export default ({ events }) => {
           />
         </Column>
         <Column gutter="6rem" width={1 / 3}>
+          {/* Call PromotedEventsCard component and pass props */}
           <PromotedEventsCard
             events={sortedByParticipants[2]}
             color1="126, 213, 111"

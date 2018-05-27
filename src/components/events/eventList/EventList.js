@@ -1,18 +1,24 @@
+// Library imports
 import React from 'react';
+import _ from 'lodash';
 import styled from 'styled-components';
 
+// Component imports
 import BGVideo from './BGVideo';
 
+// Function imports
 import { FormatText, truncate } from '../../helpers/utility';
 import { SecondaryH2, TertiaryH3, Paragraph } from '../../helpers/typography';
 import { Row } from '../../helpers/grid';
-import { ButtonText, TextLinkExternal } from '../../Button';
+import { ButtonPrimary, ButtonText, TextLinkExternal } from '../../Button';
 
+// Section container style
 const EventListWrapper = styled.section`
   position: relative;
   padding: 15rem 0;
 `;
 
+// Event container style
 const EventItem = styled.div`
   width: 75%;
   max-height: 27rem;
@@ -24,6 +30,7 @@ const EventItem = styled.div`
   transform: skewX(-12deg);
 `;
 
+// Image container style
 const EventShape = styled.figure`
   position: relative;
   width: 35%;
@@ -32,15 +39,18 @@ const EventShape = styled.figure`
   transform: skewX(12deg);
 `;
 
+// Image style
 const EventIMG = styled.img`
   height: 100%;
   transition: all 0.5s;
 
+  /* Aplly filter on image when hover EventItem */
   ${EventItem}:hover & {
     filter: grayscale(0.5) brightness(40%);
   }
 `;
 
+// Text style (over image)
 const EventCaption = styled.figcaption`
   margin: 1rem;
   position: absolute;
@@ -53,18 +63,22 @@ const EventCaption = styled.figcaption`
   opacity: 0;
   transition: all 0.5s;
 
+  /* Animation on image when over EventItem */
   ${EventItem}:hover & {
     opacity: 1;
     transform: translateX(0%);
   }
 `;
 
+// Unordered List style
 const EventProperties = styled.ul`
   list-style: none;
 `;
 
+// Rename list item for better readability
 const EventPropertyItem = styled.li``;
 
+// Event text container
 const EventDescription = styled.div`
   padding: 4.5rem 1rem 6rem 6rem;
   width: 65%;
@@ -72,14 +86,32 @@ const EventDescription = styled.div`
   transform: skewX(12deg);
 `;
 
+// Formatted text (cut after 3 lines)
 const Text = Paragraph.extend`
   ${truncate()};
   margin-bottom: 0.75rem;
 `;
 
+const getEvents = (events, itemCount, multiplier = 0) => {
+  multiplier = itemCount * multiplier;
+
+  // Get the last 3 * multiplier element from array
+  if (events.length - multiplier > itemCount + multiplier) {
+    return events.slice(
+      events.length - multiplier - itemCount,
+      events.length - multiplier
+    );
+    // Return the original array
+  } else {
+    return events;
+  }
+};
+
 export default ({ events }) => {
-  const newEvents = events.slice(-3);
-  const eventElement = newEvents.map(item => {
+  // Sort events by start time and save first 3 element to array
+  const sortedEvents = getEvents(_.sortBy(events, 'from'), 3, 0);
+  // List sortedEvents
+  const eventElement = sortedEvents.map(item => {
     let categories = item.category.join(', ');
     return (
       <Row key={item.id} marginBottom="6rem">
@@ -103,6 +135,7 @@ export default ({ events }) => {
                 <EventPropertyItem>
                   Participants: {item.participants}
                 </EventPropertyItem>
+                <EventPropertyItem>id: {item.id}</EventPropertyItem>
 
                 <EventPropertyItem>Price: {item.price}</EventPropertyItem>
               </EventProperties>
@@ -122,14 +155,32 @@ export default ({ events }) => {
       </Row>
     );
   });
-
+  // Render component
   return (
     <EventListWrapper>
+      {/* Background Video component */}
       <BGVideo />
+
       <FormatText textAlign="center" marginBottom="6rem">
         <SecondaryH2>Events in Memphis</SecondaryH2>
       </FormatText>
+      {/* call eventElements */}
       {eventElement}
+      <FormatText textAlign="center">
+        <ButtonPrimary
+          // linear-gradient color1
+          color1="41, 152, 255"
+          // linear-gradient color2
+          color2="86, 67, 250"
+          // text of button color
+          color="#fff"
+          // box-shadow
+          bs="rgba(86, 67, 250, 0.3)"
+          to="#"
+        >
+          Get More
+        </ButtonPrimary>
+      </FormatText>
     </EventListWrapper>
   );
 };

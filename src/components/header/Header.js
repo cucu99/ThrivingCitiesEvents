@@ -11,7 +11,7 @@ const HeaderContentWapper = styled.div`
   position: absolute;
   top: 20%;
   left: 50%;
-  transform: translate(-50%, 0); /* Center text */
+  transform: translate(-50%, 0);
   text-align: center;
 `;
 

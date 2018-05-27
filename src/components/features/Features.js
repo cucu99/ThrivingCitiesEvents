@@ -1,18 +1,20 @@
+// Library Imports
 import React from 'react';
 import styled from 'styled-components';
-
+// Icon Imports
 import {
   SportIcon,
   ArtIcon,
   MusicIcon,
   DanceIcon
 } from '../../data/Icons/icons';
+// Function Imports
 import { TertiaryH3, Paragraph } from '../helpers/typography';
 import { Row, Column } from '../helpers/grid';
 import { FormatText } from '../helpers/utility';
-
+// Image Imports
 import featureIMG from '../../data/img/features-img.jpg';
-
+// Section Container
 const FeatureWapper = styled.section`
   margin-top: -10rem;
   padding: 20rem 0;
@@ -30,7 +32,7 @@ const FeatureWapper = styled.section`
     transform: skewY(7deg);
   }
 `;
-
+// Feature container
 const FeatureBox = styled.div`
   background-color: rgba(255, 255, 255, 0.8);
   font-size: 1.5rem;
