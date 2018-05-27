@@ -1,10 +1,10 @@
 import React from 'react';
+
 import { render } from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
-import App from './App';
-
-// import injectGlobal helper
 import { injectGlobal } from 'styled-components';
+
+import App from './App';
 
 // Global style
 injectGlobal`
