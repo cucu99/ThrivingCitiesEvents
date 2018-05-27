@@ -92,24 +92,9 @@ const Text = Paragraph.extend`
   margin-bottom: 0.75rem;
 `;
 
-const getEvents = (events, itemCount, multiplier = 0) => {
-  multiplier = itemCount * multiplier;
-
-  // Get the last 3 * multiplier element from array
-  if (events.length - multiplier > itemCount + multiplier) {
-    return events.slice(
-      events.length - multiplier - itemCount,
-      events.length - multiplier
-    );
-    // Return the original array
-  } else {
-    return events;
-  }
-};
-
 export default ({ events }) => {
-  // Sort events by start time and save first 3 element to array
-  const sortedEvents = getEvents(_.sortBy(events, 'from'), 3, 0);
+  // Sort events by id and save last 3 element to array
+  const sortedEvents = _.takeRight(_.sortBy(events, 'id'), 3);
   // List sortedEvents
   const eventElement = sortedEvents.map(item => {
     let categories = item.category.join(', ');
@@ -135,7 +120,6 @@ export default ({ events }) => {
                 <EventPropertyItem>
                   Participants: {item.participants}
                 </EventPropertyItem>
-                <EventPropertyItem>id: {item.id}</EventPropertyItem>
 
                 <EventPropertyItem>Price: {item.price}</EventPropertyItem>
               </EventProperties>
