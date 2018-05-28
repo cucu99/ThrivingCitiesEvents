@@ -20,7 +20,7 @@ const EventListWrapper = styled.section`
 
 // Event container style
 const EventItem = styled.div`
-  width: 75%;
+  width: 94%;
   max-height: 27rem;
   margin: 0 auto;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
@@ -91,10 +91,18 @@ const Text = Paragraph.extend`
   ${truncate()};
   margin-bottom: 0.75rem;
 `;
+// EventItem Container
+const EventScroller = styled.div`
+  margin: 0 auto;
+  height: 60rem;
+  width: 65%;
+  overflow: auto;
+  border: 1px solid #eee;
+`;
 
 export default ({ events }) => {
-  // Sort events by id and save last 3 element to array
-  const sortedEvents = _.takeRight(_.sortBy(events, 'id'), 3);
+  // Sort events by id and save reversed order to array
+  const sortedEvents = _.reverse(_.sortBy(events, 'id'));
   // List sortedEvents
   const eventElement = sortedEvents.map(item => {
     let categories = item.category.join(', ');
@@ -148,9 +156,11 @@ export default ({ events }) => {
       <FormatText textAlign="center" marginBottom="6rem">
         <SecondaryH2>Events in Memphis</SecondaryH2>
       </FormatText>
-      {/* call eventElements */}
-      {eventElement}
-      <FormatText textAlign="center">
+      <EventScroller>
+        {/* Call eventElements */}
+        {eventElement}
+      </EventScroller>
+      <FormatText textAlign="center" marginTop="6rem">
         <ButtonPrimary
           // linear-gradient color1
           color1="41, 152, 255"
