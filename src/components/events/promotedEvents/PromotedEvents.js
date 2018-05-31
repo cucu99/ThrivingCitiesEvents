@@ -1,6 +1,7 @@
 // Library Imports
 import React from 'react';
 import styled from 'styled-components';
+import ScrollableAnchor from 'react-scrollable-anchor';
 // Component Imports
 import PromotedEventsCard from './PromotedEventsCard';
 // Function Imports
@@ -25,7 +26,9 @@ export default ({ events }) => {
   return (
     <PromotedEventsWrapper>
       <FormatText textAlign="center" marginBottom="6rem">
-        <SecondaryH2>Most popular events</SecondaryH2>
+        <ScrollableAnchor id={'PopularEvents'}>
+          <SecondaryH2>Most popular events</SecondaryH2>
+        </ScrollableAnchor>
       </FormatText>
 
       <Row marginBottom="6rem">
@@ -60,9 +63,10 @@ export default ({ events }) => {
           color2="86, 67, 250"
           color="#fff"
           bs="rgba(86, 67, 250, 0.3)"
-          to="#"
+          to="#EventList"
+          target="_self"
         >
-          &#x21E9; Discover More Events &#x21E9;
+          Discover More Events
         </ButtonPrimary>
       </FormatText>
     </PromotedEventsWrapper>

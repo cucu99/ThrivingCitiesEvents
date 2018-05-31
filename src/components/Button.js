@@ -4,6 +4,7 @@ import { moveInBottom } from './helpers/keyframes';
 import { Link } from 'react-router-dom';
 
 export const ButtonPrimary = styled(Link)`
+  float: ${props => (props.float ? props.float : 'none')};
   background-image: linear-gradient(
     to right bottom,
     rgb(${props => (props.color1 ? props.color1 : '255,255,255')}),
@@ -58,7 +59,8 @@ export const ButtonText = styled(Link)`
     color: ${props => (props.color ? props.color : 'rgba(86, 67, 250, 0.8);')};
     display: inline-block;
     text-decoration: none;
-    border-bottom: 1px solid rgba(86, 67, 250, 0.8);
+    border-bottom: 1px solid
+      ${props => (props.color ? props.color : 'rgba(86, 67, 250, 0.8);')};
     padding: 3px;
     transition: all 0.2s;
   }
@@ -83,13 +85,70 @@ export const ButtonText = styled(Link)`
 export const TextLinkExternal = styled.a`
   &:link,
   &:visited {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     text-decoration: none;
     border-bottom: 1px dotted;
-    color: #fff;
+    color: ${props => (props.color ? props.color : '#f7f7f7')};
   }
 
-  &:hover {
+  &:hover,
+  &:active {
     color: rgb(41, 152, 255);
+    box-shadow: ${props =>
+      props.bS ? props.bS : '0 1rem 2rem rgba(0, 0, 0, 0.4)'};
+  }
+`;
+
+export const NavButton = styled.button`
+  position: relative;
+  background: transparent;
+  font-size: 1.6rem;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  border: none;
+  padding: 3px;
+  transition: all 0.2s;
+
+  &:hover {
+    color: #fff;
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -5px;
+    left: 0;
+    background-color: #fff;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  &:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+`;
+
+export const LogoButton = styled.button`
+  background: transparent;
+  border: none;
+  outline: none;
+  transition: all 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 `;

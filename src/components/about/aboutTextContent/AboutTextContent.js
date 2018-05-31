@@ -34,7 +34,9 @@ export default () => {
         </Paragraph>
       </FormatText>
 
-      <ButtonText to="#">Learn More &rarr;</ButtonText>
+      <ButtonText to="http://www.thrivingcities.com/" target="_blank">
+        Learn More &rarr;
+      </ButtonText>
     </Column>
   );
 };

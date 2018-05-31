@@ -1,20 +1,13 @@
+// Library imports
 import React from 'react';
 import styled from 'styled-components';
-
+// Background image import
 import heroIMG from './img/hero.jpg';
-
+// Function imports
 import { ButtonPrimaryAnimated } from '../Button';
 import { PrimaryH1, PrimaryH2 } from '../helpers/typography';
 import { FormatText } from '../helpers/utility';
-
-const HeaderContentWapper = styled.div`
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  text-align: center;
-`;
-
+// Header Wrapper
 const HeaderWrapper = styled.div`
   height: 95vh;
   background-image: linear-gradient(
@@ -29,6 +22,14 @@ const HeaderWrapper = styled.div`
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 `;
+// Header text and buttonWrapper
+const HeaderContentWapper = styled.div`
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+`;
 
 const Header = () => {
   return (
@@ -39,7 +40,9 @@ const Header = () => {
           <PrimaryH2>Community affairs and integrated events</PrimaryH2>
         </FormatText>
 
-        <ButtonPrimaryAnimated to="#">Discover</ButtonPrimaryAnimated>
+        <ButtonPrimaryAnimated to="/#About" target="_self">
+          Discover
+        </ButtonPrimaryAnimated>
       </HeaderContentWapper>
     </HeaderWrapper>
   );

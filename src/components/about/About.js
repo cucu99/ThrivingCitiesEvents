@@ -1,6 +1,7 @@
 // Library Imports
 import React from 'react';
 import styled from 'styled-components';
+import ScrollableAnchor from 'react-scrollable-anchor';
 // Component Imports
 import AboutTextContent from './aboutTextContent/AboutTextContent';
 import AboutImgComposition from './aboutImgComposition/AboutImgComposition';
@@ -17,15 +18,17 @@ const AboutWrapper = styled.section`
 
 export default ({ events }) => {
   return (
-    <AboutWrapper>
-      <FormatText textAlign="center" marginBottom="8rem">
-        <SecondaryH2>The best events in Memphis, Tennesse!</SecondaryH2>
-      </FormatText>
+    <ScrollableAnchor id={'About'}>
+      <AboutWrapper>
+        <FormatText textAlign="center" marginBottom="8rem">
+          <SecondaryH2>The best events in Memphis, Tennesse!</SecondaryH2>
+        </FormatText>
 
-      <Row marginBottom="8rem">
-        <AboutTextContent />
-        <AboutImgComposition events={events} />
-      </Row>
-    </AboutWrapper>
+        <Row marginBottom="8rem">
+          <AboutTextContent />
+          <AboutImgComposition events={events} />
+        </Row>
+      </AboutWrapper>
+    </ScrollableAnchor>
   );
 };

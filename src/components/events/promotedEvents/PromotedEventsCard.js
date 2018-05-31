@@ -172,8 +172,14 @@ export default props => {
             <PriceValue>{props.events.price}</PriceValue>
           </CTABoxDetails>
           {/* color: Button text color */}
-          <ButtonPrimary color="#777" to="#">
-            Book now!
+          <ButtonPrimary
+            color="#777"
+            to={{
+              pathname: `/event/${props.events.title}/booking`,
+              state: { event: props.events }
+            }}
+          >
+            Sign up now!
           </ButtonPrimary>
         </CTABox>
       </CardSideBack>
