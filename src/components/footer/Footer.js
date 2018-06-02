@@ -7,12 +7,17 @@ import { Logo } from '../../data/Logo/mainLogo';
 import { Row, Column } from '../helpers/grid';
 import { Paragraph } from '../helpers/typography';
 import { TextLinkExternal } from '../Button';
+import { media } from '../helpers/utility';
 
 // Stle FooterContainer
 const FooterContainer = styled.div`
   background-color: #333;
   padding: 10rem 0;
   font-size: 1.4rem;
+
+  ${media.portrait`
+    padding: 8rem 0;
+  `};
 `;
 
 // Style LogoBox
@@ -26,6 +31,11 @@ const FooterNavigation = styled.div`
   border-top: 1px solid #777;
   padding-top: 2rem;
   display: inline-block;
+
+  ${media.portrait`
+    width: 100%;
+    text-align: center;
+  `};
 `;
 
 // Style FooterList
@@ -49,6 +59,11 @@ const Copyright = styled(Paragraph)`
   padding-top: 2rem;
   width: 75%;
   float: right;
+
+  ${media.portrait`
+    width: 100%;
+    float: none;
+  `};
 `;
 
 // Style FooterLinks

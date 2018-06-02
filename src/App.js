@@ -19,6 +19,7 @@ import { events } from './data/events/events';
 //   scroll-behavior: smooth;
 // `;
 const ScrollingBox = styled.div``;
+
 class App extends Component {
   // initialize state
   state = {

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { moveInLeft, moveInRight } from './keyframes';
+import { media } from '../helpers/utility';
 
 export const PrimaryH1 = styled.h1`
   color: #fff;
@@ -10,6 +11,16 @@ export const PrimaryH1 = styled.h1`
   font-weight: 700;
   letter-spacing: 1.5rem;
   animation: ${moveInLeft} 1s ease-out;
+
+  ${media.landscape`
+    letter-spacing:1rem;
+    font-size: 2rem;
+  `};
+
+  ${media.phone`
+    letter-spacing: 0.56rem;
+    font-size: 2rem
+  `};
 `;
 
 export const PrimaryH2 = styled.h2`
@@ -22,6 +33,15 @@ export const PrimaryH2 = styled.h2`
   letter-spacing: 0.5rem;
   padding-right: 1rem;
   animation: ${moveInRight} 1s ease-out;
+
+  ${media.landscape`
+    letter-spacing:0.04rem;
+    font-size: 1.5rem;
+  `};
+  ${media.phone`
+    letter-spacing: 0.04rem;
+    font-size: 1.18rem
+  `};
 `;
 
 export const SecondaryH2 = styled.h2`
@@ -39,6 +59,14 @@ export const SecondaryH2 = styled.h2`
   color: transparent;
   letter-spacing: 2px;
   transition: all 0.2s;
+
+  ${media.portrait`
+    font-size: 3rem;
+  `};
+
+  ${media.phone`
+    font-size: 2.5rem;
+  `};
 
   &:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.01);

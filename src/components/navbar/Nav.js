@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Logo } from '../../data/Logo/HeaderLogo';
-
+import { media } from '../helpers/utility';
 import { NavButton, LogoButton } from '../Button';
 
 const NavbarList = styled.ul`
@@ -12,6 +12,8 @@ const NavbarList = styled.ul`
   margin: 0 auto;
   padding: 1.5rem 0;
   width: 96%;
+  ${media.portrait`width: 100%;`};
+
   list-style: none;
   text-align: center;
   z-index: 1000;

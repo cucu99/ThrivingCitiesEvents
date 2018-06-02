@@ -6,7 +6,7 @@ import heroIMG from './img/hero.jpg';
 // Function imports
 import { ButtonPrimaryAnimated } from '../Button';
 import { PrimaryH1, PrimaryH2 } from '../helpers/typography';
-import { FormatText } from '../helpers/utility';
+import { FormatText, media } from '../helpers/utility';
 // Header Wrapper
 const HeaderWrapper = styled.div`
   height: 95vh;
@@ -21,6 +21,11 @@ const HeaderWrapper = styled.div`
   position: relative;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  ${media.phone`
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  `};
 `;
 // Header text and buttonWrapper
 const HeaderContentWapper = styled.div`
@@ -40,7 +45,7 @@ const Header = () => {
           <PrimaryH2>Community affairs and integrated events</PrimaryH2>
         </FormatText>
 
-        <ButtonPrimaryAnimated to="/#About" target="_self">
+        <ButtonPrimaryAnimated to="#About" target="_self">
           Discover
         </ButtonPrimaryAnimated>
       </HeaderContentWapper>

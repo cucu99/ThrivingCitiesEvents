@@ -4,6 +4,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { injectGlobal } from 'styled-components';
+import { media } from './components/helpers/utility';
 import { ButtonText } from './components/Button';
 // Component imports
 import App from './App';
@@ -24,7 +25,18 @@ injectGlobal`
 
 /* Root font-size */
 html {
-  font-size: 62.5%;
+  /* 1 rem = 12px; 12/16 = 75% Huge desktop > 1800px*/
+  ${media.bigDesktop`font-size: 75%;`};
+  
+  /* 1 rem = 10px; 10/16 = 62.5%  Main desktop < 1800px */
+  ${media.desktop`font-size: 62.5%`}; 
+
+  /* 1 rem = 9px; 9/16 = 56.25% Tablet Landscape < 1200px */
+  ${media.landscape`font-size: 56.25%;`};
+
+  /* 1 rem = 8px; 8/16 = 50% Tablet Portrait < 900px */
+  ${media.portrait`font-size: 50%;`};
+
 }
 
 body {
@@ -36,6 +48,8 @@ body {
   color: #777;
   /* Padding around body */
   padding: 2%;
+  ${media.portrait`padding: 0;`};
+  
 
   box-sizing: border-box;
   overflow-Y: scroll;

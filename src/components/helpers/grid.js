@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import { clearFix } from './utility';
-
+import { clearFix, media } from './utility';
 // Float-grid layout
 
 /*-----------------------------------------------------------
@@ -30,7 +29,15 @@ export const Row = styled.div`
   margin: ${props => (props.margin ? props.margin : '0 auto')};
   &:not(:last-child) {
     margin-bottom: ${props => (props.marginBottom ? props.marginBottom : '0')};
+
+    ${media.portrait`margin-bottom: 6rem;`};
   }
+
+  ${media.portrait`
+    max-width: 50rem;
+    padding: 0 3rem;
+  `};
+
   ${clearFix()};
 `;
 
@@ -39,5 +46,12 @@ export const Column = styled.div`
   float: ${props => (props.float ? props.float : 'left')};
   &:not(:last-child) {
     margin-right: ${gutter};
+
+    ${media.portrait`
+      margin-right: 0;
+      margin-bottom: 6rem;
+      `};
   }
+
+  ${media.portrait`width: 100% !important;`};
 `;

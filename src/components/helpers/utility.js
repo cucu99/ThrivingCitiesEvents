@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // Format text helper.
 export const FormatText = styled.div`
@@ -74,3 +74,36 @@ export function truncate(maxHeight = 5.1, lineHeight = 1.7) {
   }
   `;
 }
+
+// Media Query Manager:
+
+// 0 - 600px: XPathNSResolver
+// 600 - 900px: Tablet portrait
+// 900 - 1200px: Tablet landscape
+// 1200 - 1800px is where normal styles apply
+// 1800px +: Big desktop
+
+const sizes = {
+  // desktops
+  bigDesktop: 200000,
+  desktop: 1800,
+  // tablets
+  landscape: 1200,
+  portrait: 900,
+  // phones
+  phone: 600
+};
+
+// Itarate through the sizes and create a media   template
+export const media = Object.keys(sizes).reduce((accumulator, label) => {
+  // Use em in breakpoints to work properly cross-browser and support users
+  // Changing their browsers font-size
+  const emSize = sizes[label] / 16;
+
+  accumulator[label] = (...args) => css`
+    @media (max-width: ${emSize}em) {
+      ${css(...args)};
+    }
+  `;
+  return accumulator;
+}, {});
