@@ -7,13 +7,17 @@ import AboutTextContent from './aboutTextContent/AboutTextContent';
 import AboutImgComposition from './aboutImgComposition/AboutImgComposition';
 // Function Imports
 import { SecondaryH2 } from '../helpers/typography';
-import { FormatText } from '../helpers/utility';
+import { FormatText, media } from '../helpers/utility';
 import { Row } from '../helpers/grid';
 // Section container style
 const AboutWrapper = styled.section`
   background-color: #f7f7f7;
   padding: 25rem 0;
   margin-top: -20vh;
+
+  ${media.portrait`
+    padding: 20rem 0;
+  `};
 `;
 
 export default ({ events }) => {

@@ -24,6 +24,10 @@ const FooterContainer = styled.div`
 const LogoBox = styled.div`
   text-align: center;
   margin-bottom: 8rem;
+
+  ${media.portrait`
+    margin-bottom: 6rem;
+  `};
 `;
 
 // Style FooterNavigation

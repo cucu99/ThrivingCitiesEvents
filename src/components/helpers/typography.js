@@ -37,10 +37,12 @@ export const PrimaryH2 = styled.h2`
   ${media.landscape`
     letter-spacing:0.04rem;
     font-size: 1.5rem;
+    margin-bottom: 2rem;
   `};
   ${media.phone`
     letter-spacing: 0.04rem;
-    font-size: 1.18rem
+    font-size: 1.18rem;
+    margin-bottom: 1rem;
   `};
 `;
 

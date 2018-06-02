@@ -6,7 +6,7 @@ import ScrollableAnchor from 'react-scrollable-anchor';
 import PromotedEventsCard from './PromotedEventsCard';
 // Function Imports
 import { SecondaryH2 } from '../../helpers/typography';
-import { FormatText } from '../../helpers/utility';
+import { FormatText, media } from '../../helpers/utility';
 import { Row, Column } from '../../helpers/grid';
 import { ButtonPrimary } from '../../Button';
 // Section container style
@@ -14,6 +14,10 @@ const PromotedEventsWrapper = styled.section`
   background-color: #f7f7f7;
   padding: 25rem 0 15rem 0;
   margin-top: -10rem;
+
+  ${media.portrait`
+    padding: 20rem 0 5rem 0;
+  `};
 `;
 
 export default ({ events }) => {

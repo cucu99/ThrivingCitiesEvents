@@ -3,6 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import _ from 'lodash';
 
+import { media } from '../../helpers/utility';
+
 // Container for images
 const CompositionWrapper = styled.div`
   position: relative;
@@ -18,12 +20,30 @@ const AboutImgCompositionItem = styled.img`
   transition: all 0.2s;
   /* outline reactangle */
   outline-offset: 2rem;
+
   /* Positions with dynamic properties */
   left: ${props => (props.left ? props.left : 'auto')};
 
   right: ${props => (props.right ? props.right : 'auto')};
 
   top: ${props => (props.top ? props.top : 'auto')};
+
+  /* Media Queries */
+  ${media.portrait`
+    position: relative;
+    float: left;
+    width: 33.3333%;
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2);
+  `} ${media.portrait`
+     left: ${props => (props.leftmedia ? props.leftmedia : props.left)};
+
+     right: ${props => (props.rightmedia ? props.rightmedia : props.right)};
+
+      top: ${props => (props.topmedia ? props.topmedia : props.top)};
+
+      transform: scale(${props => props.scale});
+      z-index: ${props => props.zIndex};
+  `}
 
   /* Scale up image on hover */
   &:hover {
@@ -55,6 +75,9 @@ export default ({ events }) => {
             key={item.id}
             left="0"
             top="-2rem"
+            topmedia="0"
+            scale="1.1"
+            zIndex="10"
           />
         );
       case 1:
@@ -66,6 +89,9 @@ export default ({ events }) => {
             key={item.id}
             right="0"
             top="2rem"
+            topmedia="-1rem"
+            scale="1.3"
+            zIndex="11"
           />
         );
       case 2:
@@ -77,6 +103,10 @@ export default ({ events }) => {
             key={item.id}
             left="20%"
             top="10rem"
+            topmedia="1rem"
+            leftmedia="0"
+            scale="1.2"
+            zIndex="10"
           />
         );
       default:

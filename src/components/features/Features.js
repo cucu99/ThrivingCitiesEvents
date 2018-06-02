@@ -12,7 +12,7 @@ import {
 // Function Imports
 import { TertiaryH3, Paragraph } from '../helpers/typography';
 import { Row, Column } from '../helpers/grid';
-import { FormatText, truncate } from '../helpers/utility';
+import { FormatText, truncate, media } from '../helpers/utility';
 // Image Imports
 import featureIMG from '../../data/img/features-img.jpg';
 // Section Container
@@ -33,6 +33,10 @@ const FeatureWapper = styled.section`
   & > * {
     transform: skewY(7deg);
   }
+
+  ${media.portrait`
+    padding: 15rem 0;
+  `};
 `;
 // Feature container
 const FeatureBox = styled.div`
@@ -44,7 +48,9 @@ const FeatureBox = styled.div`
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   transition: transform 0.3s;
 
-  &:hover {
+  ${media.portrait`
+    padding: 2rem;
+  `} &:hover {
     transform: translateY(-1.5rem) scale(1.03);
   }
 `;

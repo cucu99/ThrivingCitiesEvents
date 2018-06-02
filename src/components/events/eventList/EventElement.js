@@ -3,13 +3,13 @@ import _ from 'lodash';
 import styled from 'styled-components';
 
 // Function imports
-import { FormatText, truncate } from '../../helpers/utility';
+import { FormatText, truncate, media } from '../../helpers/utility';
 import { TertiaryH3, Paragraph } from '../../helpers/typography';
 import { Row } from '../../helpers/grid';
 import { ButtonText, TextLinkExternal } from '../../Button';
 
 // Event container style
-const EventItem = styled.div`
+const EventItem = Row.extend`
   width: 93.5%;
   max-height: 27rem;
   margin: 0 auto;
@@ -18,6 +18,10 @@ const EventItem = styled.div`
   border-radius: 3px;
   overflow: hidden;
   transform: skewX(-12deg);
+
+  ${media.portrait`
+    overflow: auto;
+  `};
 `;
 
 // Image container style
@@ -53,6 +57,14 @@ const EventCaption = styled.figcaption`
   opacity: 0;
   transition: all 0.5s;
 
+  ${media.portrait`
+  font-size: 1.4rem;
+  `};
+
+  ${media.portrait`
+  font-size: 1rem;
+  `};
+
   /* Animation on image when over EventItem */
   ${EventItem}:hover & {
     opacity: 1;
@@ -80,8 +92,22 @@ const EventContent = styled.div`
 const Text = Paragraph.extend`
   ${truncate()};
   margin-bottom: 0.75rem;
+
+  ${media.portrait`
+    font-size: 1.3rem;
+  `};
+
+  ${media.phone`
+    font-size: 1rem;
+  `};
 `;
 
+const TextH3 = TertiaryH3.extend`
+  font-size: 1.5rem;
+  ${media.phone`
+    font-size: 1.2rem;
+  `};
+`;
 class EventElement extends Component {
   state = {
     events: this.props.events
@@ -94,52 +120,48 @@ class EventElement extends Component {
     return sortedEvents.map(item => {
       let categories = item.category.join(', ');
       return (
-        <Row key={item.id} marginBottom="6rem">
-          <EventItem>
-            <EventShape>
-              <EventIMG src={item.imgURL} alt={item.imgALT} />
-              <EventCaption>
-                <EventProperties>
-                  <EventPropertyItem>
-                    Categories: {categories}
-                  </EventPropertyItem>
+        <EventItem marginBottom="6rem">
+          <EventShape>
+            <EventIMG src={item.imgURL} alt={item.imgALT} />
+            <EventCaption>
+              <EventProperties>
+                <EventPropertyItem>Categories: {categories}</EventPropertyItem>
 
-                  <EventPropertyItem>
-                    <TextLinkExternal target="_blank" href={item.homepage}>
-                      Homepage &rarr;
-                    </TextLinkExternal>
-                  </EventPropertyItem>
+                <EventPropertyItem>
+                  <TextLinkExternal target="_blank" href={item.homepage}>
+                    Homepage &rarr;
+                  </TextLinkExternal>
+                </EventPropertyItem>
 
-                  <EventPropertyItem>Start: {item.from}</EventPropertyItem>
+                <EventPropertyItem>Start: {item.from}</EventPropertyItem>
 
-                  <EventPropertyItem>End: {item.to}</EventPropertyItem>
+                <EventPropertyItem>End: {item.to}</EventPropertyItem>
 
-                  <EventPropertyItem>
-                    Participants: {item.participants}
-                  </EventPropertyItem>
+                <EventPropertyItem>
+                  Participants: {item.participants}
+                </EventPropertyItem>
 
-                  <EventPropertyItem>Price: {item.price}</EventPropertyItem>
-                </EventProperties>
-              </EventCaption>
-            </EventShape>
-            <EventContent>
-              <FormatText marginBottom="1.5rem">
-                <TertiaryH3 fontSize="2.5rem">{item.title}</TertiaryH3>
-                <TertiaryH3>{item.address}</TertiaryH3>
-              </FormatText>
-              <Text>{item.description}</Text>
-              <ButtonText
-                float="right"
-                to={{
-                  pathname: `/event/${item.title}`,
-                  state: { event: item }
-                }}
-              >
-                Read more &rarr;
-              </ButtonText>
-            </EventContent>
-          </EventItem>
-        </Row>
+                <EventPropertyItem>Price: {item.price}</EventPropertyItem>
+              </EventProperties>
+            </EventCaption>
+          </EventShape>
+          <EventContent>
+            <FormatText marginBottom="1rem">
+              <TextH3 fontSize="2.5rem">{item.title}</TextH3>
+              <TextH3>{item.address}</TextH3>
+            </FormatText>
+            <Text>{item.description}</Text>
+            <ButtonText
+              float="right"
+              to={{
+                pathname: `/event/${item.title}`,
+                state: { event: item }
+              }}
+            >
+              Read more &rarr;
+            </ButtonText>
+          </EventContent>
+        </EventItem>
       );
     });
   }

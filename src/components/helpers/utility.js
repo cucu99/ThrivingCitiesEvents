@@ -1,5 +1,38 @@
 import styled, { css } from 'styled-components';
 
+// Media Query Manager:
+
+// 0 - 600px: XPathNSResolver
+// 600 - 900px: Tablet portrait
+// 900 - 1200px: Tablet landscape
+// 1200 - 1800px is where normal styles apply
+// 1800px +: Big desktop
+
+const sizes = {
+  // desktops
+  bigDesktop: 200000,
+  desktop: 1800,
+  // tablets
+  landscape: 1200,
+  portrait: 900,
+  // phones
+  phone: 600
+};
+
+// Itarate through the sizes and create a media   template
+export const media = Object.keys(sizes).reduce((accumulator, label) => {
+  // Use em in breakpoints to work properly cross-browser and support users
+  // Changing their browsers font-size
+  const emSize = sizes[label] / 16;
+
+  accumulator[label] = (...args) => css`
+    @media (max-width: ${emSize}em) {
+      ${css(...args)};
+    }
+  `;
+  return accumulator;
+}, {});
+
 // Format text helper.
 export const FormatText = styled.div`
   text-align: ${props => (props.textAlign ? props.textAlign : 'inherit')};
@@ -7,6 +40,15 @@ export const FormatText = styled.div`
   margin-bottom: ${props => (props.marginBottom ? props.marginBottom : 0)};
 
   margin-top: ${props => (props.marginTop ? props.marginTop : 0)};
+
+  ${media.portrait`
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  `};
+  ${media.phone`
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  `};
 `;
 
 // Absolute center
@@ -74,36 +116,3 @@ export function truncate(maxHeight = 5.1, lineHeight = 1.7) {
   }
   `;
 }
-
-// Media Query Manager:
-
-// 0 - 600px: XPathNSResolver
-// 600 - 900px: Tablet portrait
-// 900 - 1200px: Tablet landscape
-// 1200 - 1800px is where normal styles apply
-// 1800px +: Big desktop
-
-const sizes = {
-  // desktops
-  bigDesktop: 200000,
-  desktop: 1800,
-  // tablets
-  landscape: 1200,
-  portrait: 900,
-  // phones
-  phone: 600
-};
-
-// Itarate through the sizes and create a media   template
-export const media = Object.keys(sizes).reduce((accumulator, label) => {
-  // Use em in breakpoints to work properly cross-browser and support users
-  // Changing their browsers font-size
-  const emSize = sizes[label] / 16;
-
-  accumulator[label] = (...args) => css`
-    @media (max-width: ${emSize}em) {
-      ${css(...args)};
-    }
-  `;
-  return accumulator;
-}, {});

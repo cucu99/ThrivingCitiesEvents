@@ -8,7 +8,7 @@ import BGVideo from './BGVideo';
 import EventElement from './EventElement';
 
 // Function imports
-import { FormatText } from '../../helpers/utility';
+import { FormatText, media } from '../../helpers/utility';
 import { SecondaryH2 } from '../../helpers/typography';
 import { ButtonPrimary } from '../../Button';
 
@@ -16,15 +16,25 @@ import { ButtonPrimary } from '../../Button';
 const EventListWrapper = styled.section`
   position: relative;
   padding: 15rem 0;
+
+  ${media.portrait`
+    padding: 5rem 0;
+  `};
 `;
 
 // EventItem Container
 const EventScroller = styled.div`
   margin: 0 auto;
-  height: 60rem;
+  height: 65rem;
   width: 65%;
   overflow: auto;
   border: 1px solid #f7f7f7;
+
+  ${media.portrait`
+    width: 85%;
+  `} ${media.phone`
+    width: 100%;
+  `};
 `;
 
 class EventList extends Component {
