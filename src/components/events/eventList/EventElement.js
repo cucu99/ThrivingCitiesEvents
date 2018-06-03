@@ -120,7 +120,7 @@ class EventElement extends Component {
     return sortedEvents.map(item => {
       let categories = item.category.join(', ');
       return (
-        <EventItem marginBottom="6rem">
+        <EventItem key={item.id} marginBottom="6rem">
           <EventShape>
             <EventIMG src={item.imgURL} alt={item.imgALT} />
             <EventCaption>
