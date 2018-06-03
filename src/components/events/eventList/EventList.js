@@ -31,7 +31,7 @@ const EventScroller = styled.div`
   border: 1px solid #f7f7f7;
 
   ${media.portrait`
-    width: 85%;
+    width: 75%;
   `} ${media.phone`
     width: 100%;
   `};

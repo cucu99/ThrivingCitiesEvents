@@ -3,11 +3,19 @@ import React from 'react';
 import styled from 'styled-components';
 // Function Imports
 import { ButtonPrimary } from '../../Button';
+import { media } from '../../helpers/utility';
 // Card container
 const PromotedEventsCardWrapper = styled.div`
   perspective: 150rem;
   position: relative;
   height: 50rem;
+
+  ${media.portrait`
+    height: auto;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  `};
 `;
 // Cardside style
 const CardSide = styled.div`
@@ -21,6 +29,13 @@ const CardSide = styled.div`
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+
+  ${media.portrait`
+    height: auto;
+    position: relative;
+    border-radius: 0px;
+    box-shadow: none;
+  `};
 `;
 // Cardside front style
 const CardSideFront = CardSide.extend`
@@ -28,6 +43,10 @@ const CardSideFront = CardSide.extend`
 
   ${PromotedEventsCardWrapper}:hover & {
     transform: rotateY(180deg);
+
+    ${media.portrait`
+      transform: rotateY(0);
+    `};
   }
 `;
 // Cardside back style
@@ -43,6 +62,12 @@ const CardSideBack = CardSide.extend`
   ${PromotedEventsCardWrapper}:hover & {
     transform: rotateY(0deg);
   }
+
+  ${media.portrait`
+    transform: rotateY(0);
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+    border-radius: 0 0 3px 3px;
+  `};
 `;
 // Front card picture style
 const CardPicture = styled.div`
@@ -85,6 +110,10 @@ const CardHeadingSpan = styled.span`
 // Details unordered list container
 const CardDetails = styled.div`
   padding: 3rem;
+
+  ${media.portrait`
+    padding: 1rem 3rem;
+  `};
 `;
 // Details unordered list stylz
 const CardDetailsList = styled.ul`
@@ -110,11 +139,24 @@ const CTABox = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  ${media.portrait`
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(0);
+    width: 100%;
+    padding: 7rem 4rem 4rem 4rem;
+  `};
 `;
 
 const CTABoxDetails = styled.div`
   color: #fff;
   margin-bottom: 8rem;
+
+  ${media.portrait`
+    margin-bottom: 3rem;
+  `};
 `;
 
 const PriceTag = styled.p`
@@ -125,6 +167,10 @@ const PriceTag = styled.p`
 const PriceValue = styled.p`
   font-size: 6rem;
   font-weight: 100;
+
+  ${media.portrait`
+    font-size: 4rem;
+  `};
 `;
 
 export default props => {
